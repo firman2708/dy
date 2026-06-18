@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Crush ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:#160926;
+overflow-x:hidden;
+color:white;
+}
+
+/* ================= BACKGROUND FOTO TERBANG (DIUBAH AGAR LEBIH TERANG & HIDUP) ================= */
+.wallpaper{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
+overflow:hidden;
+background: linear-gradient(135deg, #1f0b30 0%, #3a104d 40%, #1a0a2a 100%);
+transition: transform 0.1s ease-out;
+}
+
+.floating-photo{
+position:absolute;
+width:200px;
+height:250px;
+object-fit:cover;
+border-radius:20px;
+border: 2px solid rgba(255, 215, 0, 0.4);
+box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 30px rgba(255, 215, 0, 0.25);
+opacity:0.25; /* Dinaikkan agar foto melayang lebih terlihat */
+animation: float 20s ease-in-out infinite;
+filter: blur(0px);
+}
+
+.floating-photo:nth-child(1){top:10%;left:5%;animation-delay:0s;animation-duration:22s;}
+.floating-photo:nth-child(2){top:55%;right:8%;animation-delay:5s;animation-duration:25s;}
+.floating-photo:nth-child(3){bottom:10%;left:12%;animation-delay:10s;animation-duration:20s;}
+.floating-photo:nth-child(4){top:20%;right:22%;animation-delay:15s;animation-duration:23s;}
+
+@keyframes float{
+0%,100%{transform:translateY(0) rotate(-5deg) scale(1);}
+25%{transform:translateY(-35px) rotate(3deg) scale(1.03);}
+50%{transform:translateY(0) rotate(-2deg) scale(1);}
+75%{transform:translateY(35px) rotate(5deg) scale(0.97);}
+}
+
+.overlay{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background: radial-gradient(circle at center, transparent 20%, rgba(26, 10, 42, 0.4) 100%);
+backdrop-filter:blur(1px);
+z-index:-2;
+}
+
+/* ================= MAIN ================= */
+.main{
+padding:60px 20px;
+text-align:center;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+position:relative;
+z-index:1;
+}
+
+.nama{
+font-size:52px;
+font-weight:800;
+letter-spacing: 2px;
+background: linear-gradient(45deg, #ffd700, #ff69b4, #ff1493, #ffd700);
+background-size: 300% 300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5));
+margin-bottom:15px;
+animation: glow 3s ease-in-out infinite, gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+@keyframes glow{
+0%,100%{filter:drop-shadow(0 0 25px rgba(255, 215, 0, 0.5));}
+50%{filter:drop-shadow(0 0 40px rgba(255, 105, 180, 0.7));}
+}
+
+.subjudul{
+font-size:18px;
+color:rgba(255, 215, 0, 0.95);
+margin-bottom:40px;
+font-weight: 400;
+letter-spacing: 1px;
+text-shadow:0 0 15px rgba(255,215,0,0.4);
+}
+
+.glass{
+background: rgba(255, 255, 255, 0.06);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid rgba(255, 255, 255, 0.15);
+border-radius: 30px;
+padding: 40px;
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(255, 215, 0, 0.05);
+max-width:1100px;
+margin:auto;
+}
+
+/* FOTO GRID */
+.foto-container{
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:25px;
+margin-top:10px;
+}
+
+.foto-container img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:18px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+cursor:pointer;
+}
+
+.foto-container img:hover{
+transform: scale(1.04) translateY(-10px);
+box-shadow: 0 20px 40px rgba(255, 105, 180, 0.4), 0 0 25px rgba(255, 215, 0, 0.3);
+border-color: rgba(255, 215, 0, 0.8);
+}
+
+@media (max-width: 768px){
+.nama { font-size: 35px; }
+.subjudul { font-size: 16px; }
+.glass { padding: 20px; }
+.foto-container{grid-template-columns:repeat(2, 1fr);gap:15px;}
+.foto-container img{height:220px;}
+.floating-photo{width:110px;height:140px;opacity:0.2;}
+}
+
+/* BUTTON PREMIUM */
+button{
+padding:16px 40px;
+border:none;
+border-radius:40px;
+background: linear-gradient(45deg, #ffd700, #ff69b4, #ffd700);
+background-size: 200% auto;
+color:#160926;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+margin-top:40px;
+transition: all 0.4s ease;
+box-shadow:0 10px 30px rgba(255, 105, 180, 0.4);
+}
+
+button:hover{
+transform: scale(1.06) translateY(-2px);
+background-position: right center;
+box-shadow:0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+/* POPUP FOTO */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(22, 9, 38, 0.95);
+backdrop-filter:blur(15px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+opacity: 0;
+transition: opacity 0.4s ease;
+}
+
+.popup img{
+max-width:85%;
+max-height:85%;
+border-radius:20px;
+border: 2px solid rgba(255, 215, 0, 0.6);
+box-shadow:0 0 50px rgba(255, 215, 0, 0.4);
+transform: scale(0.9);
+transition: transform 0.4s ease;
+}
+
+/* CONFETTI */
+.confetti{
+position:fixed;
+width:12px;
+height:12px;
+top:-10px;
+animation:fall 3s linear forwards;
+border-radius:50%;
+z-index:100;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh) rotate(720deg);}
+}
+
+/* ================= LOVE MODAL ================= */
+.loveBox{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(22, 9, 38, 0.96);
+backdrop-filter:blur(20px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.loveContent{
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 215, 0, 0.3);
+padding:50px 40px;
+border-radius:30px;
+text-align:center;
+max-width:650px;
+width: 90%;
+box-shadow:0 25px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.loveContent h2{
+font-size:30px;
+font-weight: 800;
+background:linear-gradient(45deg,#ffd700,#ff69b4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
+}
+
+.cakeIcon{
+font-size:80px;
+margin-bottom:20px;
+display: inline-block;
+animation:bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0) scale(1);}
+50%{transform:translateY(-15px) scale(1.08);}
+}
+
+#loveText{
+margin-top:20px;
+min-height:120px;
+font-size:20px;
+font-weight:600;
+line-height:1.8;
+color: #ffffff;
+opacity:0;
+transform:translateY(15px);
+transition:all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+text-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+
+.showText{
+opacity:1!important;
+transform:translateY(0)!important;
+}
+
+.giftSection{
+margin-top:20px;
+display:none;
+}
+
+.giftIcon{
+font-size:75px;
+cursor:pointer;
+display: inline-block;
+animation: wobble 1s ease-in-out infinite;
+}
+
+@keyframes wobble {
+0%, 100% { transform: rotate(0deg) scale(1); }
+25% { transform: rotate(-8deg) scale(1.05); }
+75% { transform: rotate(8deg) scale(1.05); }
+}
+
+#giftLink button {
+margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="passwordScreen" style="
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:#1f0b30;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:5000;
+transition: all 0.5s ease;
+">
+
+<h2 style="color:#ffd700;margin-bottom:25px;text-shadow:0 0 25px rgba(255,215,0,0.5);font-weight:600;font-size:24px;letter-spacing:1px;">
+Masukin Sandi Dulu Ya 🎂
+</h2>
+
+<input type="password" id="passwordInput" placeholder="Masukkan sandi..."
+style="padding:14px 25px;border-radius:30px;border:1px solid rgba(255,215,0,0.4);
+background:rgba(255,255,255,0.1);color:white;font-size:16px;
+outline:none;text-align:center;margin-bottom:10px;width:260px;transition:0.3s;box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+
+<button onclick="checkPassword()" style="margin-top:15px; padding:12px 40px;">Buka 🎉</button>
+
+<p id="errorText" style="color:#ff4d4d;margin-top:15px;font-size:14px;font-weight:600;min-height:20px;"></p>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="Hari.mp3" type="audio/mpeg">
+</audio>
+
+<div class="wallpaper" id="wallpaper">
+<img src="foto/1.jpeg" class="floating-photo" alt="Foto 1">
+<img src="foto/2.jpeg" class="floating-photo" alt="Foto 2">
+<img src="foto/3.jpeg" class="floating-photo" alt="Foto 3">
+<img src="foto/4.jpeg" class="floating-photo" alt="Foto 4">
+</div>
+<div class="overlay"></div>
+
+<div class="main">
+<h1 class="nama">HAPPY BIRTHDAY YAA</h1>
+<p class="subjudul">Untuk crush paling spesial di dunia</p>
+
+<div class="glass">
+<div class="foto-container">
+<script>
+for(let i=1;i<=4;i++){
+document.write(`<img src="foto/${i}.jpeg" onclick="openPopup(this.src)" alt="Foto ${i}">`);
+}
+</script>
+</div>
+
+<button onclick="showLove()">🎉 Buka Kado Ultahnya 🎉</button>
+</div>
+</div>
+
+<div class="popup" id="popup" onclick="closePopup()">
+<img id="popupImg" src="" alt="Popup Detail">
+</div>
+
+<div class="loveBox" id="loveBox">
+<div class="loveContent">
+<h2>Untuk Kamu yang Ulang Tahun ❤️</h2>
+<div class="cakeIcon">🎂</div>
+<div id="loveText"></div>
+
+<div class="giftSection" id="giftSection">
+<div class="giftIcon" onclick="openGift()">🎁</div>
+<div id="giftLink" style="display:none;">
+<a href="https://www.google.com/search?q=wisata+jogja" target="_blank">
+<button style="margin-top:15px;">Yuk Rayain Bareng 🌹</button>
+</a>
+</div>
+</div>
+
+<button onclick="closeLove()" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; margin-top:30px; padding:10px 30px; box-shadow:none;">Tutup</button>
+</div>
+</div>
+
+<script>
+/* EFFECT PARALLAX */
+document.addEventListener("mousemove",(e)=>{
+let x=(e.clientX/window.innerWidth-0.5)*15;
+let y=(e.clientY/window.innerHeight-0.5)*15;
+document.getElementById("wallpaper").style.transform=`translate(${x}px,${y}px)`;
+});
+
+/* POPUP FOTO */
+function openPopup(src){
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImg");
+popupImg.src = src;
+popup.style.display = "flex";
+setTimeout(() => {
+popup.style.opacity = "1";
+popupImg.style.transform = "scale(1)";
+}, 10);
+}
+
+function closePopup(){
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImg");
+popup.style.opacity = "0";
+popupImg.style.transform = "scale(0.9)";
+setTimeout(() => {
+popup.style.display = "none";
+}, 400);
+}
+
+/* CONFETTI ULTAH */
+function confettiEffect(){
+const colors = ['#ffd700','#ff69b4','#ff1493','#00bfff','#da70d6'];
+for(let i=0;i<120;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"%";
+c.style.background=colors[Math.floor(Math.random()*colors.length)];
+c.style.animationDuration=(Math.random()*2+2)+"s";
+c.style.width = Math.random()*6+8+"px";
+c.style.height = Math.random()*6+8+"px";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),4000);
+}
+}
+
+/* UCAPAN ULANG TAHUN */
+let messageInterval; 
+
+function showLove(){
+confettiEffect();
+document.getElementById("loveBox").style.display="flex";
+
+let messages=[
+"Selamat ulang tahun ya buat kamu yang paling spesial ❤️",
+"Jujur, aku bingung mau nyusun kata-kata seindah apa hari ini...",
+"Tapi yang jelas, aku bersyukur banget kamu ada di dunia ini.",
+"Terima kasih ya, udah selalu jadi alasan aku tersenyum tiap kali liat notif dari kamu.",
+"Di hari spesialmu ini, aku cuma mau bilang...",
+"Kamu berhak mendapatkan semua hal baik dan kebahagiaan di dunia ini.",
+"Semoga di usia yang baru, segala impian dan doa-doa kamu segera terwujud.",
+"Semoga kamu selalu sehat, bahagia, dan tetap jadi orang yang menginspirasi.",
+"Apapun yang kamu hadapi ke depan, aku bakal selalu siap jadi supporter nomor satu kamu...",
+"Entah itu dari jauh, atau dari dekat kalau kamu izinkan 😊",
+"Aku kagum sama kamu bukan cuma karena visual kamu yang menarik,",
+"Tapi karena ketulusan hati dan pembawaan kamu yang luar biasa.",
+"Sekarang, tiup lilinnya dan buat 3 permohonan terbaik kamu...",
+"Selamat naik level! Aku selalu bangga sama segala proses yang kamu lewati.",
+"Sekali lagi, happy birthday ya."
+];
+
+let i=0;
+let textBox=document.getElementById("loveText");
+textBox.innerHTML="";
+textBox.classList.remove("showText");
+document.getElementById("giftSection").style.display="none";
+document.getElementById("giftLink").style.display="none";
+
+clearInterval(messageInterval);
+
+function showNext(){
+if(i < messages.length){
+textBox.classList.remove("showText");
+setTimeout(()=>{
+textBox.innerHTML = messages[i];
+textBox.classList.add("showText");
+i++;
+},500);
+}else{
+clearInterval(messageInterval);
+document.getElementById("giftSection").style.display="block";
+}
+}
+
+showNext();
+messageInterval = setInterval(showNext, 3300); 
+}
+
+function closeLove(){
+clearInterval(messageInterval);
+document.getElementById("loveBox").style.display="none";
+document.getElementById("giftSection").style.display="none";
+document.getElementById("giftLink").style.display="none";
+document.getElementById("loveText").innerHTML="";
+document.getElementById("loveText").classList.remove("showText");
+}
+
+function openGift(){
+document.getElementById("giftLink").style.display="block";
+}
+
+/* ================= PASSWORD SYSTEM ================= */
+let correctPassword = "18062026";
+
+document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+if (event.key === "Enter") {
+checkPassword();
+}
+});
+
+function checkPassword(){
+let input = document.getElementById("passwordInput").value;
+let music = document.getElementById("bgMusic");
+
+if(input === correctPassword){
+document.getElementById("passwordScreen").style.opacity="0";
+setTimeout(() => {
+document.getElementById("passwordScreen").style.display="none";
+}, 500);
+
+music.volume = 0.4;
+music.play().then(()=>{
+console.log("Musik berhasil diputar");
+}).catch((err)=>{
+console.log("Autoplay gagal di-handle:", err);
+});
+}else{
+document.getElementById("errorText").innerText="Sandi salah, coba lagi ya 🎂";
+let inputBg = document.getElementById("passwordInput");
+inputBg.style.borderColor = "#ff4d4d";
+setTimeout(() => { inputBg.style.borderColor = "rgba(255, 215, 0, 0.4)"; }, 1000);
+}
+}
+</script>
+
+</body>
+</html>
